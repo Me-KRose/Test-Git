@@ -2,20 +2,52 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build C",
+            "label": "Build (Debug)",
             "type": "shell",
             "command": "gcc",
             "args": [
                 "${file}",
-				"-static-libgcc",
+                "-static-libgcc",
                 "-lmingw32",
-				"-I", "C:/compiler/Libraries/SDL/include",   // Tell compiler where to find SDL.h
-				"-L", "C:/compiler/Libraries/SDL/lib",   // Tell linker where to find .a files
-				"-lSDL2main",
-				"-lSDL2",
-				"-lSDL2_image",
+                "-g",
+                "-O0",
+                "-I",
+                "C:/compiler/Libraries/SDL/include",
+                "-L",
+                "C:/compiler/Libraries/SDL/lib",
+                "-lSDL2main",
+                "-lSDL2",
+                "-lSDL2_image",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.exe"
+                "${workspaceFolder}/${fileBasenameNoExtension}.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build (Release)",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "${file}",
+                "-static-libgcc",
+                "-lmingw32",
+                "-O2",
+                "-DNDEBUG",
+                "-I",
+                "C:/compiler/Libraries/SDL/include",
+                "-L",
+                "C:/compiler/Libraries/SDL/lib",
+                "-lSDL2main",
+                "-lSDL2",
+                "-lSDL2_image",
+                "-o",
+                "${workspaceFolder}/${fileBasenameNoExtension}.exe"
             ],
             "group": {
                 "kind": "build",
@@ -28,16 +60,18 @@
         {
             "type": "cppbuild",
             "label": "C/C++: gcc.exe build active file",
-            "command": "C:/compiler/msys64/mingw64/bin/gcc.exe",
+            "command": "C:/compiler/Compilers/GCC/16.1.0/mingw64/bin/gcc.exe",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-I",
+                "C:/compiler/Libraries/SDL/include"
             ],
             "options": {
-                "cwd": "C:/compiler/msys64/mingw64/bin"
+                "cwd": "C:/compiler/Compilers/GCC/16.1.0/mingw64/bin"
             },
             "problemMatcher": [
                 "$gcc"
