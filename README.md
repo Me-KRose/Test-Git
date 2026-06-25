@@ -1,0 +1,2 @@
+This is a test of
+HOW TO USE GIT FOR PUSH THE PROJECT TO GITHUB
